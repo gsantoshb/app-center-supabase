@@ -11,5 +11,5 @@ export async function GET(req: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code)
   }
 
-  return NextResponse.redirect(new URL('/landing', req.url))
+  return NextResponse.redirect(new URL('/reset-pwd', req.url))
 }

@@ -6,6 +6,7 @@ import { Database } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { AuthChangeEvent } from "@supabase/supabase-js";
+import { redirectUrlRegular } from "@/lib/constants";
 
 export default async function Login() {
   const supabase = createClientComponentClient<Database>();
@@ -17,7 +18,7 @@ export default async function Login() {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event: AuthChangeEvent) => {
         if (event === "SIGNED_IN") {
-          router.push("/countries");
+          router.push("/landing");
         }
       }
     );
@@ -26,7 +27,7 @@ export default async function Login() {
 
   return (
     <div className="auth-widget">
-      <AuthForm viewProps={"sign_in"} />
+      <AuthForm viewProps={"sign_in"} redirectTo={redirectUrlRegular} />
       <div className="flex flex-col items-center justify-between text-sm mt-3">
         <a
           href="/forgot-pwd"

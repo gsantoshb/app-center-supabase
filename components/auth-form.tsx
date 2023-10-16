@@ -5,7 +5,7 @@ import { ThemeSupa, ViewType } from '@supabase/auth-ui-shared'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Database } from '@/types'
 
-export default function AuthForm({viewProps}:{viewProps:ViewType|undefined}) {
+export default function AuthForm({viewProps, redirectTo}:{viewProps:ViewType|undefined, redirectTo: string }) {
   const supabase = createClientComponentClient<Database>()
   return (
     <Auth
@@ -15,7 +15,7 @@ export default function AuthForm({viewProps}:{viewProps:ViewType|undefined}) {
       theme="dark"
       showLinks={false}
       providers={[]}
-      redirectTo="http://localhost:3000/auth/callback"
+      redirectTo={redirectTo}
     />
   )
 }
