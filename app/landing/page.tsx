@@ -13,7 +13,7 @@ interface MockData {
     name: string;
   }
 
-export default async function Landing() {
+export default function Landing() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 

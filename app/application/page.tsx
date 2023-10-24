@@ -4,20 +4,26 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-export default async function Application() {
+interface FormData {
+  name: string;
+  address: string;
+  certificate: File | null;
+}
+
+export default function Application() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 
   // const { data: countries } = await supabase.from("countries").select();
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     address: '',
-    certificate: '',
+    certificate: null,
   });
-
 
   useEffect(() => {
 
@@ -31,30 +37,51 @@ export default async function Application() {
     });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setFormData({
-          ...formData,
-          certificate: reader.result as string,
-        });
-      };
-      reader.readAsDataURL(file);
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData({
+        ...formData,
+        certificate: e.target.files[0],
+      });
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (formData.name.trim() === '' || formData.address.trim() === '') {
-      alert('Please fill in all fields.');
-      return;
-    }
+    try {
 
-    console.log('Form submitted:', formData);
+      const certificateUuid = uuidv4();
+
+      // Upload certificate to Supabase Storage
+      const { data: certificateData, error: certificateError } = await supabase.storage
+        .from('certificates')
+        .upload('public/certificates/' + certificateUuid, formData.certificate);
+
+      if (certificateError) {
+        console.log("Certificate error thrown..."+JSON.stringify(certificateError));
+        throw certificateError;
+      }
+
+      // Insert application record into the applications table
+      const { data, error } = await supabase
+        .from('applications')
+        .insert([
+          { name: formData.name, address: formData.address, certificate_uuid: certificateUuid },
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      alert('Application submitted successfully!');
+      router.push('/confirmation'); // Redirect to home page
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      alert('Error submitting application. Please try again later.');
+    }
   };
+
 
   return (
     <div className="bg-gray-800 text-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300">

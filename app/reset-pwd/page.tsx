@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { AuthChangeEvent } from "@supabase/supabase-js";
 import { redirectUrlRegular } from '@/lib/constants';
 
-export default async function ResetPwd() {
+export default function ResetPwd() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 

@@ -5,7 +5,7 @@ import { Database } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export default async function Confirmation() {
+export default function Confirmation() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 

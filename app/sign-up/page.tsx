@@ -8,7 +8,7 @@ import { redirectUrlRegular } from '@/lib/constants';
 import { useEffect } from "react";
 import { AuthChangeEvent } from "@supabase/supabase-js";
 
-export default async function SignUp() {
+export default function SignUp() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 
