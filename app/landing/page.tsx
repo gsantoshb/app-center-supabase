@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import CardSection from "@/components/CardSection";
 import Table from "@/components/Table";
+import Link from "next/link";
 
 interface MockData {
     id: number;
@@ -42,11 +43,13 @@ export default async function Landing() {
         <Table data={mockData} />
       </CardSection>
       <CardSection>
+      <Link href="/application">
         <div className="flex justify-center">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Apply for eamcet
           </button>
         </div>
+        </Link>
       </CardSection>
     </div>
   );

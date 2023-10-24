@@ -34,6 +34,27 @@ export interface Database {
   }
   public: {
     Tables: {
+      applications: {
+        Row: {
+          address: string
+          application_id: number
+          certificate_uuid: string
+          name: string
+        }
+        Insert: {
+          address: string
+          application_id?: number
+          certificate_uuid: string
+          name: string
+        }
+        Update: {
+          address?: string
+          application_id?: number
+          certificate_uuid?: string
+          name?: string
+        }
+        Relationships: []
+      }
       countries: {
         Row: {
           id: number
