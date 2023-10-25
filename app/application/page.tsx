@@ -6,12 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
-interface FormData {
-  name: string;
-  address: string;
-  certificate: File | null;
-}
+import FormData from "@/lib/models";
 
 export default function Application() {
   const supabase = createClientComponentClient<Database>();
@@ -68,14 +63,16 @@ export default function Application() {
         .from('applications')
         .insert([
           { name: formData.name, address: formData.address, certificate_uuid: certificateUuid },
-        ]);
+        ]).select('*');
 
       if (error) {
         throw error;
       }
-
-      alert('Application submitted successfully!');
-      router.push('/confirmation'); // Redirect to home page
+      if(data){
+        alert('Application submitted successfully!');
+        console.log("Id from db:"+JSON.stringify(data[0].application_id));
+        router.push(`/confirmation/${data[0].application_id}`); // Redirect to home page
+      }
     } catch (error) {
       console.error('Error submitting application:', error);
       alert('Error submitting application. Please try again later.');
@@ -121,7 +118,7 @@ export default function Application() {
             type="file"
             id="certificate"
             name="certificate"
-            accept=".pdf, .doc, .docx"
+            accept=".pdf"
             onChange={handleFileChange}
             className="w-full px-3 py-2 rounded border bg-gray-700 focus:outline-none focus:shadow-outline"
           />
