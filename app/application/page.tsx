@@ -44,6 +44,11 @@ export default function Application() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+  
+
     try {
 
       const certificateUuid = uuidv4();
@@ -62,7 +67,10 @@ export default function Application() {
       const { data, error } = await supabase
         .from('applications')
         .insert([
-          { name: formData.name, address: formData.address, certificate_uuid: certificateUuid },
+          { name: formData.name, 
+            address: formData.address, 
+            certificate_uuid: certificateUuid,
+            created_user_id: user?.id },
         ]).select('*');
 
       if (error) {

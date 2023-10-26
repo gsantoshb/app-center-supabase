@@ -5,6 +5,7 @@ import { Database } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import FormData from "@/lib/models";
+import Link from "next/link";
 
 export default function Confirmation({ params }: { params: { applicationId: string } }) {
   const supabase = createClientComponentClient<Database>();
@@ -61,11 +62,13 @@ export default function Confirmation({ params }: { params: { applicationId: stri
           {isCertificateValid ? 'Valid' : 'Invalid'}
         </div>
       </div>
-      <div className="flex justify-center">
-        <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
-          Confirm
+      <Link href="/landing">
+        <div className="flex justify-center">
+          <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+            Go to Applications
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

@@ -1,10 +1,12 @@
 import React from 'react';
+import { Database } from "@/types";
+import Link from "next/link";
 
-interface TableProps {
-  data: { id: number; name: string }[];
+interface TableProps{
+  data:Database["public"]["Tables"]["applications"]["Row"][]|undefined;
 }
 
-const Table: React.FC<TableProps> = ({ data }) => {
+const Table: React.FC<TableProps> = ({data}) => {
   return (
     <table className="w-full border-collapse border border-gray-600 text-white">
       <thead>
@@ -14,14 +16,14 @@ const Table: React.FC<TableProps> = ({ data }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item) => (
-          <tr key={item.id}>
-            <td className="border border-gray-600 p-2">{item.id}</td>
-            <td className="border border-gray-600 p-2">
-              <a href="#" className="text-blue-300">
-                {item.name}
-              </a>
-            </td>
+        {data && data.map((item:any) => (
+          <tr key={item.application_id}>
+            <td className="border border-gray-600 p-2">{item.application_id}</td>
+              <td className="border border-gray-600 p-2 text-blue-500">
+              <Link href={`/confirmation/${item.application_id}`}>
+              {item.name}           
+              </Link>
+              </td>
           </tr>
         ))}
       </tbody>
