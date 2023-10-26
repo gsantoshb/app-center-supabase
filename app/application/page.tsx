@@ -44,6 +44,13 @@ export default function Application() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+      // Validate name and address
+  if (formData.name.trim() === '' || formData.address.trim() === '') {
+    alert('Please fill out both Name and Address fields.');
+    return;
+  }
+
+
     const {
       data: { user },
     } = await supabase.auth.getUser();
