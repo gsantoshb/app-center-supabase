@@ -1,3 +1,11 @@
+Demo
+
+
+
+https://github.com/gsantoshb/app-center-supabase/assets/2831293/ced2f152-5346-4c60-b64b-4b625001f9e3
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
