@@ -12,8 +12,6 @@ export default async function ForgotPwd() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 
- // const { data: countries } = await supabase.from("countries").select();
-
  useEffect(() => {
   const { data: authListener } = supabase.auth.onAuthStateChange(
     (event: AuthChangeEvent) => {
@@ -29,14 +27,6 @@ export default async function ForgotPwd() {
   return (
     <div className="auth-widget">
         <AuthForm viewProps={"forgotten_password"} redirectTo={redirectUrlToResetPwd} />
-              {/* <div className="flex flex-col items-center justify-between text-sm mt-3">
-                  <a href="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Login?
-                  </a>
-                  <a href="/sign-up" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Sign Up?
-                  </a>
-              </div> */}
     </div>
     
   );

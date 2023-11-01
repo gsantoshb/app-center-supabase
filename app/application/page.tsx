@@ -18,10 +18,6 @@ export default function Application() {
     certificate: null,
   });
 
-  useEffect(() => {
-
-  });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({

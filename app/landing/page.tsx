@@ -12,8 +12,6 @@ export default function Landing() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 
-  // const { data: countries } = await supabase.from("countries").select();  
-
   const [appData, setAppData] = useState<Database["public"]["Tables"]["applications"]["Row"][]|undefined>();
 
   useEffect(() => {

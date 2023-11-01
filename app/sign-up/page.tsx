@@ -12,7 +12,6 @@ export default function SignUp() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 
- // const { data: countries } = await supabase.from("countries").select();
  useEffect(() => {
   const { data: authListener } = supabase.auth.onAuthStateChange(
     (event: AuthChangeEvent) => {
