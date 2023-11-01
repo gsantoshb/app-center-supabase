@@ -1,5 +1,9 @@
 Demo
 
+<img width="1185" alt="Screen Shot 2023-11-01 at 2 25 26 PM" src="https://github.com/gsantoshb/app-center-supabase/assets/2831293/6155cbff-bb60-43cd-81d6-970bd48bd635">
+<img width="1232" alt="Screen Shot 2023-11-01 at 2 25 33 PM" src="https://github.com/gsantoshb/app-center-supabase/assets/2831293/a7ca5a47-1cef-402c-81ed-4d04d679cc1c">
+<img width="1227" alt="Screen Shot 2023-11-01 at 2 25 51 PM" src="https://github.com/gsantoshb/app-center-supabase/assets/2831293/ecb0363a-80ee-4344-8ddd-934feb8c59d0">
+<img width="913" alt="Screen Shot 2023-11-01 at 2 26 11 PM" src="https://github.com/gsantoshb/app-center-supabase/assets/2831293/d677e498-9d6f-457d-ae0a-02e7e11d4420">
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
