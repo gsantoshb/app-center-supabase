@@ -1,4 +1,5 @@
 Demo
+<img width="1251" alt="Screen Shot 2023-11-01 at 2 25 10 PM" src="https://github.com/gsantoshb/app-center-supabase/assets/2831293/b4e5e095-b47f-4a21-8aaf-4b3f26b95a07">
 
 <img width="1185" alt="Screen Shot 2023-11-01 at 2 25 26 PM" src="https://github.com/gsantoshb/app-center-supabase/assets/2831293/6155cbff-bb60-43cd-81d6-970bd48bd635">
 <img width="1232" alt="Screen Shot 2023-11-01 at 2 25 33 PM" src="https://github.com/gsantoshb/app-center-supabase/assets/2831293/a7ca5a47-1cef-402c-81ed-4d04d679cc1c">
