@@ -17,7 +17,7 @@ export default function SignUp() {
   const { data: authListener } = supabase.auth.onAuthStateChange(
     (event: AuthChangeEvent) => {
       if (event === "SIGNED_IN") {
-        router.push("/countries");
+        router.push("/landing");
       }
     }
   );

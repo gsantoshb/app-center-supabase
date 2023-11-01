@@ -12,8 +12,6 @@ export default function Application() {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 
-  // const { data: countries } = await supabase.from("countries").select();
-
   const [formData, setFormData] = useState<FormData>({
     name: '',
     address: '',
